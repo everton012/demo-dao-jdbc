@@ -14,6 +14,8 @@ public class Program {
 		
 		SellerDao sellerDao = DaoFactory.createSellerDao();
 		
+		Seller seller = new Seller();
+		
 		Department department = new Department(2, null);
 		
 		List<Seller> list = sellerDao.findAll();
@@ -25,6 +27,11 @@ public class Program {
 		Seller newSeller = new Seller(null, "Greg", "greg@gmail.com", new Date(), 4000.00, department);
 		sellerDao.insert(newSeller);
 		System.out.println("Inserted ! " + newSeller.getId());
+		
+		seller = sellerDao.findById(1);
+		seller.setName("Martha Wayne");
+		sellerDao.update(seller);
+		System.out.println("Updated completed");
 	}
 
 }
